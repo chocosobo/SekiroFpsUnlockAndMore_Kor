@@ -1,3 +1,6 @@
+# 곧 이것도 
+
+
 # Sekiro FPS Unlocker and more
 
 A small utility to remove frame rate limit, add custom resolutions with 21:9 widescreen support, change field of view (FOV), borderless window mode, display kills/deaths and log them (OBS), disable automatic camera adjustments and various game modifications for [Sekiro: Shadows Die Twice](https://www.sekirothegame.com/) written in C#.
