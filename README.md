@@ -1,4 +1,4 @@
-# 곧 이것도 
+# 곧 이것도 번역함
 
 
 # Sekiro FPS Unlocker and more
