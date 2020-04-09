@@ -862,11 +862,11 @@ namespace SekiroFpsUnlockAndMore
                     WriteBytes(_gameAccessHwndStatic, _offset_framelock, BitConverter.GetBytes(deltaTime));
                     _memoryCaveGenerator.DeactivateDataCaveByName(_DATACAVE_SPEEDFIX_POINTER);
                 }
-                if (showStatus) UpdateStatus(DateTime.Now.ToString("HH:mm:ss") + " Game unpatched!", Brushes.White);
+                if (showStatus) UpdateStatus(DateTime.Now.ToString("HH:mm:ss") + " 패치 완료!", Brushes.White);
                 return false;
             }
 
-            if (showStatus) UpdateStatus(DateTime.Now.ToString("HH:mm:ss") + " Game patched!", Brushes.Green);
+            if (showStatus) UpdateStatus(DateTime.Now.ToString("HH:mm:ss") + " 패치 완료!", Brushes.Green);
             return true;
         }
 

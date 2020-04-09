@@ -5,117 +5,126 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SekiroFpsUnlockAndMore"
         mc:Ignorable="d"
-        Title="Sekiro FPS Unlocker and more v1.2.5" Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="세키로 FPS 언락 및 덤 v1.2.5.1" Width="Auto" Height="Auto" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" Loaded="Window_Loaded" Closing="Window_Closing">
 
-    <Grid x:Name="gMainGrid" Background="#FFF9F9F9">
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top" Margin="10,10,10,0" Width="300" Height="Auto">
-                <DockPanel LastChildFill="False">
-                    <CheckBox x:Name="cbFramelock" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Frame rate lock:" ToolTip="Make sure to read the guide" IsChecked="True" Checked="CbFramelock_Check_Handler" Unchecked="CbFramelock_Check_Handler" TabIndex="1" />
-                    <TextBox x:Name="tbFramelock" DockPanel.Dock="Right" Margin="0,0,0,0" Width="116" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="144" MaxLength="3" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="2" />
-                </DockPanel>
-                <DockPanel Margin="0,5,0,0" LastChildFill="False">
-                    <CheckBox x:Name="cbAddResolution" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Add custom resolution:" ToolTip="Your monitor has to natively support this resolution" Checked="CbAddResolution_Check_Handler" Unchecked="CbAddResolution_Check_Handler" TabIndex="3" />
-                    <TextBox x:Name="tbHeight" DockPanel.Dock="Right" Margin="0,0,0,0" Width="50" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="1080" MaxLength="4" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="5" />
-                    <Label DockPanel.Dock="Right" Margin="0,0,0,0" Height="25" FontSize="14 px" Content="x" />
-                    <TextBox x:Name="tbWidth" DockPanel.Dock="Right" Margin="0,0,0,0" Width="50" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="2560" MaxLength="4" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="4" />
-                </DockPanel>
-                <DockPanel Margin="0,5,0,0" LastChildFill="False">
-                    <CheckBox x:Name="cbFov" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Change FOV by (%):" ToolTip="Increase or decrease" Checked="CbFov_Check_Handler" Unchecked="CbFov_Check_Handler" TabIndex="6" />
-                    <Button x:Name="bFovHigher" DockPanel.Dock="Right" Content="&gt;" Margin="0,0,0,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BFovHigher_Click" />
-                    <TextBox x:Name="tbFov" DockPanel.Dock="Right" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="25" TextAlignment="Center" MaxLength="3" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="7" />
-                    <Button x:Name="bFovLower" DockPanel.Dock="Right" Content="&lt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BFovLower_Click" />
-                    <Button x:Name="bFov0" DockPanel.Dock="Right" Content="0" Margin="0,0,3,0" Width="27" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BFov0_Click" />
-                </DockPanel>
-                <StackPanel Margin="0,5,0,0" Orientation="Horizontal">
-                    <CheckBox x:Name="cbBorderless" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Borderless window" ToolTip="To enable this set 'Windowed' mode in game options first" IsEnabled="False" Checked="CbBorderless_Checked" Unchecked="CbBorderless_Unchecked" TabIndex="8"/>
-                    <CheckBox x:Name="cbBorderlessStretch" DockPanel.Dock="Right" Margin="10,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Fullscreen stretch" IsEnabled="False" Checked="CbBorderlessStretch_Check_Handler" Unchecked="CbBorderlessStretch_Check_Handler" TabIndex="9"  />
-                </StackPanel>
-                <CheckBox x:Name="cbLogStats" Margin="0,5,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Log stats (Deaths, Kills) to file for OBS" ToolTip="Check the guide on how to display these on stream with OBS" Checked="CbStatChanged" Unchecked="CbStatChanged" TabIndex="10" />
-                <Expander x:Name="exGameMods" Margin="-3,5,0,0" Height="Auto" FontSize="14 px" Header="Modifications" IsExpanded="True" TabIndex="11">
-                    <Grid x:Name="gSubGrid1" Margin="3,1,0,0" Background="#FFF9F9F9">
-                        <StackPanel Width="Auto" Height="Auto">
-                            <CheckBox x:Name="cbCamAdjust" Margin="0,5,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Disable camera auto rotate on movement" ToolTip="Disables the annoying automatic camera adjustment on movement. Intended for mouse users" Checked="CbCamAdjust_Check_Handler" Unchecked="CbCamAdjust_Check_Handler" TabIndex="12" />
-                            <CheckBox x:Name="cbCamReset" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Disable camera reset on lock-on" ToolTip="Disables the annoying camera centering on lock-on when there is no target" Checked="CbCamReset_Check_Handler" Unchecked="CbCamReset_Check_Handler" TabIndex="13" />
-                            <CheckBox x:Name="cbAutoLoot" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Automatically loot enemies" ToolTip="Automatically pickup and collect all enemy loot/items"  TabIndex="14" Checked="CbAutoLoot_Check_Handler" Unchecked="CbAutoLoot_Check_Handler" />
-                            <CheckBox x:Name="cbDragonrot" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Prevent dragonrot increase on death" ToolTip="NPCs won't get the disease and/or their condition won't get worse" Checked="CbDragonrot_Check_Handler" Unchecked="CbDragonrot_Check_Handler" TabIndex="15" />
-                            <CheckBox x:Name="cbDeathPenalty" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Disable death penalties (except dragonrot)" ToolTip="Disables Sen and Experience loss upon death" Checked="CbDeathPenalty_Check_Handler" Unchecked="CbDeathPenalty_Check_Handler" TabIndex="16" />
-                            <CheckBox x:Name="cbDeathPenaltyHidden" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="(DEBUG) Disable hidden death penalties" ToolTip="DEBUG ONLY" Checked="CbDeathPenaltyHidden_Check_Handler" Unchecked="CbDeathPenaltyHidden_Check_Handler" IsTabStop="False" Visibility="Collapsed" />
-                            <CheckBox x:Name="cbEmblemUpgrade" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Increase spirit emblem cap. on upgrades" ToolTip="Every prosthetic upgrade will increase maximum emblem capacity by 1. PERMANENT INCREASE!" Checked="CbEmblemUpgrade_Check_Handler" Unchecked="CbEmblemUpgrade_Check_Handler" TabIndex="17"/>
-                            <DockPanel Margin="0,3,0,0" LastChildFill="False">
-                                <CheckBox x:Name="cbGameSpeed" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Game speed (%):" ToolTip="Increase or decrease. Can potentially crash the game in cutscenes, use with caution" Checked="CbGameSpeed_Check_Handler" Unchecked="CbGameSpeed_Check_Handler" TabIndex="18"  />
-                                <Button x:Name="bGs100" DockPanel.Dock="Right" Content="100" Margin="0,0,0,0" Width="30" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BGs100_Click" />
-                                <Button x:Name="bGsHigher" DockPanel.Dock="Right" Content="&gt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BGsHigher_Click" />
-                                <TextBox x:Name="tbGameSpeed" DockPanel.Dock="Right" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="100" TextAlignment="Center" MaxLength="3" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="19" />
-                                <Button x:Name="bGsLower" DockPanel.Dock="Right" Content="&lt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BGsLower_Click" />
-                                <Button x:Name="bGs0" DockPanel.Dock="Right" Content="0" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BGs0_Click" />
-                            </DockPanel>
-                            <DockPanel Margin="0,5,0,0" LastChildFill="False">
-                                <CheckBox x:Name="cbPlayerSpeed" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="Player speed (%):" ToolTip="Increase or decrease. To enable this start the game and load a save, then tick the checkbox. Can potentially crash the game in cutscenes, use with caution" Checked="CbPlayerSpeed_Check_Handler" Unchecked="CbPlayerSpeed_Check_Handler" TabIndex="20"  />
-                                <Button x:Name="bPs100" DockPanel.Dock="Right" Content="100" Margin="0,0,0,0" Width="30" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BPs100_Click" />
-                                <Button x:Name="bPsHigher" DockPanel.Dock="Right" Content="&gt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BPsHigher_Click" />
-                                <TextBox x:Name="tbPlayerSpeed" DockPanel.Dock="Right" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="100" TextAlignment="Center" MaxLength="3" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="21" />
-                                <Button x:Name="bPsLower" DockPanel.Dock="Right" Content="&lt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BPsLower_Click" />
-                                <Button x:Name="bPs0" DockPanel.Dock="Right" Content="0" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BPs0_Click" />
-                            </DockPanel>
-                        </StackPanel>
-                    </Grid>
-                </Expander>
-                <Button x:Name="bPatch" Margin="0,7,0,0" Width="300" Height="30" FontSize="14 px" IsEnabled="False" Content="Patch game (CTRL + P)" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
+	<Grid x:Name="gMainGrid" Background="#FFF9F9F9">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="13*"/>
+			<ColumnDefinition Width="7*"/>
+		</Grid.ColumnDefinitions>
+		<DockPanel Grid.ColumnSpan="2">
+			<StackPanel DockPanel.Dock="Top" Margin="10,10,10,0" Width="300" Height="Auto">
+				<DockPanel LastChildFill="False">
+					<CheckBox x:Name="cbFramelock" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="최대 프레임 수 제한:" ToolTip="가이드를 먼저 읽어주세요" IsChecked="True" Checked="CbFramelock_Check_Handler" Unchecked="CbFramelock_Check_Handler" TabIndex="1" />
+					<TextBox x:Name="tbFramelock" DockPanel.Dock="Right" Margin="0,0,0,0" Width="116" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="144" MaxLength="3" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="2" />
+				</DockPanel>
+				<DockPanel Margin="0,5,0,0" LastChildFill="False">
+					<CheckBox x:Name="cbAddResolution" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="사용자 지정 해상도:" ToolTip="모니터가 이 해상도를 지원해야합니다" Checked="CbAddResolution_Check_Handler" Unchecked="CbAddResolution_Check_Handler" TabIndex="3" />
+					<TextBox x:Name="tbHeight" DockPanel.Dock="Right" Margin="0,0,0,0" Width="50" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="1080" MaxLength="4" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="5" />
+					<Label DockPanel.Dock="Right" Margin="0,0,0,0" Height="25" FontSize="14 px" Content="x" />
+					<TextBox x:Name="tbWidth" DockPanel.Dock="Right" Margin="0,0,0,0" Width="50" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="2560" MaxLength="4" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="4" />
+				</DockPanel>
+				<DockPanel Margin="0,5,0,0" LastChildFill="False">
+					<CheckBox x:Name="cbFov" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="시야각 조절 (%):" ToolTip="넓히거나 줄일 수 있습니다" Checked="CbFov_Check_Handler" Unchecked="CbFov_Check_Handler" TabIndex="6" />
+					<Button x:Name="bFovHigher" DockPanel.Dock="Right" Content="&gt;" Margin="0,0,0,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BFovHigher_Click" />
+					<TextBox x:Name="tbFov" DockPanel.Dock="Right" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="25" TextAlignment="Center" MaxLength="3" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="7" />
+					<Button x:Name="bFovLower" DockPanel.Dock="Right" Content="&lt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BFovLower_Click" />
+					<Button x:Name="bFov0" DockPanel.Dock="Right" Content="0" Margin="0,0,3,0" Width="27" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BFov0_Click" />
+				</DockPanel>
+				<StackPanel Margin="0,5,0,0" Orientation="Horizontal">
+					<CheckBox x:Name="cbBorderless" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="테두리 없는 창 모드" ToolTip="이 옵션을 활성화하려면 게임 내에서 창모드로 실행해주세요" IsEnabled="False" Checked="CbBorderless_Checked" Unchecked="CbBorderless_Unchecked" TabIndex="8"/>
+					<CheckBox x:Name="cbBorderlessStretch" DockPanel.Dock="Right" Margin="10,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="전체화면 영역" IsEnabled="False" Checked="CbBorderlessStretch_Check_Handler" Unchecked="CbBorderlessStretch_Check_Handler" TabIndex="9"  />
+				</StackPanel>
+				<CheckBox x:Name="cbLogStats" Margin="0,5,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="OBS용 스탯 로그 남기기 (사망 및 처치)" ToolTip="OBS에 표시하는 방법은 가이드를 확인해주세요" Checked="CbStatChanged" Unchecked="CbStatChanged" TabIndex="10" />
+				<Expander x:Name="exGameMods" Margin="-3,5,0,0" Height="Auto" FontSize="14 px" Header="기타 수정" IsExpanded="True" TabIndex="11">
+					<Grid x:Name="gSubGrid1" Margin="3,1,0,0" Background="#FFF9F9F9">
+						<StackPanel Width="Auto" Height="Auto">
+							<CheckBox x:Name="cbCamAdjust" Margin="0,5,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="이동에 따른 카메라 자동 전환 비활성화" ToolTip="짜증나는 자동 카메라 전환을 비활성화합니다. 이 기능은 마우스 유저를 위해 만들어졌습니다" Checked="CbCamAdjust_Check_Handler" Unchecked="CbCamAdjust_Check_Handler" TabIndex="12" />
+							<CheckBox x:Name="cbCamReset" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="락온에 의한 카메라 초기화 비활성화" ToolTip="목표가 없는데 카메라가 중앙으로 바뀌는 기능을 비활성화합니다" Checked="CbCamReset_Check_Handler" Unchecked="CbCamReset_Check_Handler" TabIndex="13" />
+							<CheckBox x:Name="cbAutoLoot" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="드랍 아이템 자동 루팅" ToolTip="적이 드랍하는 아이템을 자동으로 획득합니다"  TabIndex="14" Checked="CbAutoLoot_Check_Handler" Unchecked="CbAutoLoot_Check_Handler" />
+							<CheckBox x:Name="cbDragonrot" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="사망 패널티로 용윤 증가 비활성화" ToolTip="NPC가 더 이상 병을 얻거나 병세가 심해지지 않습니다" Checked="CbDragonrot_Check_Handler" Unchecked="CbDragonrot_Check_Handler" TabIndex="15" />
+							<CheckBox x:Name="cbDeathPenalty" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="사망 패널티 (용윤 증가 제외) 비활성화" ToolTip="돈과 경험치를 잃지 않습니다" Checked="CbDeathPenalty_Check_Handler" Unchecked="CbDeathPenalty_Check_Handler" TabIndex="16" />
+							<CheckBox x:Name="cbDeathPenaltyHidden" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="(DEBUG) Disable hidden death penalties" ToolTip="DEBUG ONLY" Checked="CbDeathPenaltyHidden_Check_Handler" Unchecked="CbDeathPenaltyHidden_Check_Handler" IsTabStop="False" Visibility="Collapsed" />
+							<CheckBox x:Name="cbEmblemUpgrade" Margin="0,3,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="의수 강화 시 카타시로 최대량 증가" ToolTip="닌자의수 강화시 카타시로 최대량을 영구적으로 1 증가시킵니다" Checked="CbEmblemUpgrade_Check_Handler" Unchecked="CbEmblemUpgrade_Check_Handler" TabIndex="17"/>
+							<DockPanel Margin="0,3,0,0" LastChildFill="False">
+								<CheckBox x:Name="cbGameSpeed" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="게임 속도 (%):" ToolTip="증가 혹은 감소시킵니다. 컷신에서 게임이 꺼질 수 있습니다. 사용시 주의하세요" Checked="CbGameSpeed_Check_Handler" Unchecked="CbGameSpeed_Check_Handler" TabIndex="18"  />
+								<Button x:Name="bGs100" DockPanel.Dock="Right" Content="100" Margin="0,0,0,0" Width="30" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BGs100_Click" />
+								<Button x:Name="bGsHigher" DockPanel.Dock="Right" Content="&gt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BGsHigher_Click" />
+								<TextBox x:Name="tbGameSpeed" DockPanel.Dock="Right" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="100" TextAlignment="Center" MaxLength="3" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="19" />
+								<Button x:Name="bGsLower" DockPanel.Dock="Right" Content="&lt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BGsLower_Click" />
+								<Button x:Name="bGs0" DockPanel.Dock="Right" Content="0" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BGs0_Click" />
+							</DockPanel>
+							<DockPanel Margin="0,5,0,0" LastChildFill="False">
+								<CheckBox x:Name="cbPlayerSpeed" DockPanel.Dock="Left" Margin="0,0,0,0" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Content="플레이어 속도 (%):" ToolTip="증가 혹은 감소시킵니다. 활성화하려면 세이브를 불러온 후 체크박스를 눌러주세요. 컷신에서 게임이 꺼질 수 있습니다. 사용시 주의하세요" Checked="CbPlayerSpeed_Check_Handler" Unchecked="CbPlayerSpeed_Check_Handler" TabIndex="20"  />
+								<Button x:Name="bPs100" DockPanel.Dock="Right" Content="100" Margin="0,0,0,0" Width="30" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BPs100_Click" />
+								<Button x:Name="bPsHigher" DockPanel.Dock="Right" Content="&gt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BPsHigher_Click" />
+								<TextBox x:Name="tbPlayerSpeed" DockPanel.Dock="Right" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" VerticalContentAlignment="Center" Text="100" TextAlignment="Center" MaxLength="3" PreviewTextInput="Numeric_PreviewTextInput" DataObject.Pasting="Numeric_PastingHandler" TabIndex="21" />
+								<Button x:Name="bPsLower" DockPanel.Dock="Right" Content="&lt;" Margin="0,0,3,0" Width="25" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BPsLower_Click" />
+								<Button x:Name="bPs0" DockPanel.Dock="Right" Content="0" Margin="0,0,3,0" Width="30" Height="25" FontSize="14 px" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Focusable="False" Click="BPs0_Click" />
+							</DockPanel>
+						</StackPanel>
+					</Grid>
+				</Expander>
+				<Button x:Name="bPatch" Margin="0,7,0,0" Width="300" Height="30" FontSize="14 px" IsEnabled="False" Content="게임 패치 (CTRL + P)" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" 
                     Focusable="False" Click="BPatch_Click" TabIndex="20" IsTabStop="False" />
-                <TextBox x:Name="tbStatus" Margin="0,5,0,0" Width="300" Height="25" FontSize="14 px" FontWeight="Bold" Text="waiting for game..." TextAlignment="Center" TextWrapping="NoWrap" IsEnabled="False" />
-                <Expander x:Name="exGuide" Margin="0,8,0,0" Height="Auto" FontSize="14 px" Header="ReadMe" IsExpanded="True" TabIndex="22">
-                    <TextBlock Margin="2,6,2,0" FontSize="11 px" TextWrapping="WrapWithOverflow" IsEnabled="False">
-                        <TextBlock.Inlines>
-                            <Run FontWeight="Bold" Foreground="#FF0046FF">This patcher does not modify game files, you have to start it every time.</Run>
-                            <Run FontWeight="Bold">If your monitor is 60 Hz you will have to use</Run>
-                            <Run FontWeight="Bold" Foreground="#FFF00000">fullscreen mode and force disable VSYNC</Run>
-                            <Run FontWeight="Bold">with Nvidia Control panel or AMD Radeon Settings to get frame rate unlock working.</Run>
-                            <Run FontWeight="Bold">If your monitor is >60 Hz you will have to use</Run>
-                            <Run FontWeight="Bold" Foreground="#FFF00000">borderless window mode or force the game to run on highest available refresh rate</Run>
-                            <Run FontWeight="Bold">using Nvidia Control panel or AMD Radeon Settings.</Run>
-                            <Run>Borderless window mode requires "Windowed" in game settings first.</Run>
-                            <Run FontWeight="Bold">Custom resolution adds 21:9 support and overwrites a default resolution, hud will be limited to 16:9.</Run>
-                            <Run>Borderless window mode with custom resolution requires you to patch and set resolution first, then activate borderless afterwards.</Run>
-                            <Run FontWeight="Bold">Disabling camera auto rotate is mostly intended for mouse users.</Run>
-                            <Run>Spirit emblem capacity upgrades are</Run>
-                            <Run FontWeight="Bold" Foreground="#FFF00000">permanent.</Run>
-                            <Run>Both speed modifiers can be toggled by pressing hotkey CTRL+M.</Run>
-                            <Run FontWeight="Bold">To enable Player Speed modification you have to be ingame first.</Run>
-                            <Run FontWeight="Bold" Foreground="#FFF00000">See the link below for detailed information, guides, GSYNC support and an AMD fix.</Run>
-                        </TextBlock.Inlines>
-                    </TextBlock>
-                </Expander>
-                <Label HorizontalAlignment="Right" FontSize="12 px" TabIndex="22">
-                    <Hyperlink NavigateUri="https://github.com/uberhalit/SekiroFpsUnlockAndMore" RequestNavigate="Hyperlink_RequestNavigate">
-                        v1.2.5 - by uberhalit
-                    </Hyperlink>
-                </Label>
-            </StackPanel>
-            <StatusBar DockPanel.Dock="Bottom" Height="25">
-                <StatusBarItem DockPanel.Dock="Left">
-                    <TextBlock Name="sbDeathCount">
-                            <Run Text="Deaths:" />
+				<TextBox x:Name="tbStatus" Margin="0,5,0,0" Width="300" Height="25" FontSize="14 px" FontWeight="Bold" Text="게임을 기다리는 중..." TextAlignment="Center" TextWrapping="NoWrap" IsEnabled="False" />
+				<Expander x:Name="exGuide" Margin="0,8,0,0" Height="Auto" FontSize="14 px" Header="읽어주세요" IsExpanded="True" TabIndex="22">
+					<TextBlock Margin="2,6,2,0" FontSize="11 px" TextWrapping="WrapWithOverflow" IsEnabled="False">
+						<TextBlock.Inlines>
+							<Run FontWeight="Bold" Foreground="#FF0046FF">이 패치는 게임 파일을 변경하지 않습니다. 게임을 할 때마다 실행해야합니다.</Run>
+							<Run FontWeight="Bold">모니터 주사율이 60 Hz 라면 다음 설정을 해야합니다.</Run>
+							<Run FontWeight="Bold" Foreground="#FFF00000">전체 화면모드, VSync 강제 비활성화</Run>
+							<Run FontWeight="Bold">엔비디아 제어판이나 암드 라데온 설정에서 변경해야 프레임 제한이 해제가 작동합니다.;</Run>
+							<Run FontWeight="Bold">모니터 주사율이 60 Hz 초과일 경우 다음 설정을 해야합니다.</Run>
+							<Run FontWeight="Bold" Foreground="#FFF00000">테두리없는 창모드 혹은 게임 프레임 제한을 모니터 최대 주사율과 맞추기</Run>
+							<Run FontWeight="Bold">엔비디아 제어판이나 암드 라데온 설정에서 변경해야 프레임 제한이 해제가 작동합니다.</Run>
+							<Run>테두리 없는 창 모드는 게임을 창모드로 실행할 필요가 있습니다.</Run>
+							<Run FontWeight="Bold">사용자 지정 해상도는 21:9 지원이나 기본 해상도를 덮어쓸 수 있지만 HUD는 16:9가 최대힙니다.</Run>
+							<Run>테두리 없는 창모드는 사용자 지정 해상도를 먼저 설정해 패치된 후 활성화할 수 있습니다.</Run>
+							<Run FontWeight="Bold">카메라 관련 비활성화 옵션은 대부분 마우스 유저를 위한 기능입니다.</Run>
+							<Run>카타시로 최대량 업그레이드는</Run>
+							<Run FontWeight="Bold" Foreground="#FFF00000">영구적으로 적용됩니다.</Run>
+							<Run>두가지 속도 옵션은 CTRL+M으로 토글 가능합니다.</Run>
+							<Run FontWeight="Bold">플레이어 속도를 조절하려면 일단 세이브를 로드해야합니다.</Run>
+							<Run FontWeight="Bold" Foreground="#FFF00000">아래 링크에서 상세 내용과 가이드(GSync, AMD Fix 등)를 확인하세요.</Run>
+						</TextBlock.Inlines>
+					</TextBlock>
+				</Expander>
+				<Label HorizontalAlignment="Right" FontSize="12 px" TabIndex="22">
+					<Hyperlink NavigateUri="https://github.com/uberhalit/SekiroFpsUnlockAndMore" RequestNavigate="Hyperlink_RequestNavigate">
+						v1.2.5.1 - by uberhalit (원작자)
+					</Hyperlink>
+				</Label>
+				<Label HorizontalAlignment="Right" FontSize="12 px" TabIndex="22">
+					<Hyperlink NavigateUri="https://github.com/chocosobo/SekiroFpsUnlockAndMore_Kor" RequestNavigate="Hyperlink_RequestNavigate">
+						한글패치
+					</Hyperlink>
+				</Label>
+			</StackPanel>
+			<StatusBar DockPanel.Dock="Bottom" Height="25">
+				<StatusBarItem DockPanel.Dock="Left">
+					<TextBlock Name="sbDeathCount">
+                            <Run Text="사망:" />
                             <Run Text="{Binding Deaths}" />
-                    </TextBlock>
-                </StatusBarItem>
-                <Separator Margin="5,4,5,4" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                <StatusBarItem DockPanel.Dock="Left">
-                    <TextBlock Name="sbKillCount">
-                            <Run Text="Kills:" />
+					</TextBlock>
+				</StatusBarItem>
+				<Separator Margin="5,4,5,4" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+				<StatusBarItem DockPanel.Dock="Left">
+					<TextBlock Name="sbKillCount">
+                            <Run Text="킬:" />
                             <Run Text="{Binding Kills}" />
-                    </TextBlock>
-                </StatusBarItem>
-                <Separator Margin="5,4,5,4" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                <StatusBarItem DockPanel.Dock="Left" HorizontalAlignment="Left">
-                    <TextBlock>
+					</TextBlock>
+				</StatusBarItem>
+				<Separator Margin="5,4,5,4" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
+				<StatusBarItem DockPanel.Dock="Left" HorizontalAlignment="Left">
+					<TextBlock>
                         <Run x:Name="sbMode" FontWeight="SemiBold" FontStyle="Italic" />
-                    </TextBlock>
-                </StatusBarItem>
-                <StatusBarItem DockPanel.Dock="Right" HorizontalAlignment="Right">
-                    <TextBlock Name="sbInput" />
-                </StatusBarItem>
-            </StatusBar>
-        </DockPanel>
-    </Grid>
+					</TextBlock>
+				</StatusBarItem>
+				<StatusBarItem DockPanel.Dock="Right" HorizontalAlignment="Right">
+					<TextBlock Name="sbInput" />
+				</StatusBarItem>
+			</StatusBar>
+		</DockPanel>
+	</Grid>
 </Window>
